@@ -1,0 +1,1004 @@
+#Crea una clase ValidadorEdades que:
+
+
+#Tenga un método es_valida(edad) que retorne True si la edad está entre 0 y 120,
+#  y False en caso contrario.
+#Tenga un método cargar_edades(*edades) que reciba varias edades, valide cada una y 
+# guarde solamente las válidas en una lista.
+#Tenga un método edad_promedio() que retorne el promedio de las edades almacenadas.
+
+
+class validar:
+
+    def __init__(self):
+        self.lista = []
+
+    def validad_edad(self,edad):
+        if edad >=0  and  edad <= 120:
+
+            return True
+        else:
+            return False
+
+
+    def cargar_edades(self, *edades):
+
+        for e in edades:
+
+         if self.validad_edad(e):
+             self.lista.append(e)
+
+
+        return self.lista
+
+
+    def promedio(self):
+
+        suma=0
+
+        for i in self.lista:
+
+            suma += 1
+
+
+        return suma / len(self.lista)
+    
+
+eded = validar()
+
+print(eded.validad_edad(10))
+print(eded.cargar_edades(10,0,-20,4,200,44))
+print(eded.promedio())
+
+
+
+
+"""Crea una clase RegistroCiudades que:
+
+Tenga un método agregar_ciudad(ciudad) que guarde la ciudad en un conjunto y también en una lista.
+Tenga un método cantidad_ciudades() que retorne cuántas ciudades diferentes existen.
+Tenga un método agregar_multiples(*ciudades) que reutilice agregar_ciudad().
+
+"""
+
+class Registro:
+
+    def __init__(self):
+        self.conjunto = set()
+        self.lista = []
+
+    def agregar(self, ciudad):
+
+        self.conjunto.add(ciudad)
+        self.lista.append(ciudad)
+
+
+        
+    def cantidad(self):
+    
+            i=0
+    
+            for x in self.conjunto:
+    
+                i += 1
+    
+    
+            return i
+
+  
+
+    def multi_ciudad(self, *ciudad):
+
+       for i in ciudad:
+
+          self.agregar(i)
+
+
+c = Registro()
+
+c.agregar("babahoyo")
+c.multi_ciudad("baba", "baba", "babahoyo", "salinas")
+print(c.cantidad())
+     
+
+
+"""Crea una clase Productos que:
+
+Tenga un método agregar_producto(nombre, precio) que guarde los productos en un diccionario.
+Tenga un método precio_total() que sume todos los precios.
+Tenga un método productos_caros(precio) que retorne una lista con los productos cuyo precio sea mayor al valor recibido."""
+
+
+class Productos:
+
+    def __init__(self):
+        self.diccionario = {}
+        self.lista = []
+
+    def agregar(self, nombre, precio):
+        self.diccionario[nombre] = precio
+
+        return self.diccionario
+
+    def total(self):
+        suma = 0
+
+        for precio in self.diccionario.values():
+                 suma = suma + precio
+
+        return suma
+
+    def caros(self,precio):
+
+        for name, precio_producto in self.diccionario.items():
+
+            if precio_producto > precio:
+
+                self.lista.append(name)
+
+
+
+        print(self.lista)
+
+
+
+
+                
+
+producto = Productos()
+
+print(producto.agregar("coca cola", 20.2))
+print(producto.agregar("inka cola", 10.2))
+print(producto.agregar("galleta oreo", 50.2))
+print(producto.agregar("mazuka", 30.2))
+
+print("Total:", producto.total())
+
+producto.caros(20.2)
+
+
+
+"""Crea una clase ClasificadorNumeros que:
+
+Tenga un método clasificar(numero) que retorne:
+"positivo" si es mayor que 0.
+"negativo" si es menor que 0.
+"cero" si es igual a 0.
+Tenga un método clasificar_multiples(*numeros) que retorne un diccionario:"""
+
+
+class Clasificarnumero:
+
+    def __init__(self):
+        self.diccionario = {
+         "positivos" : [],
+         "negativos" : [],
+          "cero" : []
+        }
+
+    def clasificacion(self, numero):
+
+        if numero > 0:
+            return "positivo"
+        elif numero < 0:
+            return "negativo"
+        else:
+            return "cero"
+
+
+    def multiplicos(self, *numeros):
+
+        for n in numeros:
+
+            self.clasificacion(n)
+
+            if self.clasificacion(n) == "positivo":
+
+              self.diccionario["positivos"].append(n)
+            elif self.clasificacion(n) == "negativo":
+               self.diccionario["negativos"].append(n)
+            else:
+              self.diccionario["cero"].append(n)
+
+
+
+        return self.diccionario
+                
+
+
+n = Clasificarnumero()
+
+print(n.clasificacion(0))
+print(n.multiplicos(10,20,30,40,-50,0))
+
+
+
+"""Crea una clase RegistroEstudiantes que:
+
+Tenga un método registrar(nombre, nota) que guarde los datos en un diccionario.
+Tenga un método aprobados() que retorne una lista con los nombres cuya nota sea >= 70.
+Tenga un método mejor_nota() que retorne una tupla:"""
+
+
+class Registro:
+
+    def __init__(self):
+        self.diccionario = {}
+        self.lista = []
+
+    def registrar(self, nombre, nota):
+
+        self.diccionario[nombre] = nota
+
+        return self.diccionario
+
+    def aprobados(self):
+
+        for nombre, nota in self.diccionario.items():
+
+            if nota >= 70:
+
+                self.lista.append(nombre)
+
+
+        return self.lista
+
+    def mejornota(self):
+
+        mayor =  max(self.diccionario.values())
+
+        for nombre, nota in self.diccionario.items():
+
+            if nota == mayor:
+
+                return (nombre, nota)
+            
+
+
+
+
+estudiante = Registro()
+
+print(estudiante.registrar("NAHIN BOLIVAR GUILLIN", 10))
+print(estudiante.registrar("isaac", 20))
+print(estudiante.registrar("jeremi", 70))
+print(estudiante.registrar("saul", 30))
+print(estudiante.aprobados())
+print(estudiante.mejornota())
+
+
+"""Ejercicio 6 — Medio: Contador de números
+
+Crea una clase ContadorNumeros que:
+
+Tenga un método agregar(numero) que guarde números en un diccionario.
+El diccionario debe contar cuántas veces aparece cada número.
+Tenga un método veces(numero) que indique cuántas veces apareció.
+Tenga un método mas_repetido() que retorne el número que más veces aparece."""
+
+class contador:
+
+    def __init__(self):
+
+        self.diccionario = {}
+
+    def  agregar(self, numero):
+
+  
+
+        if numero  in self.diccionario:
+
+            self.diccionario[numero] += 1
+        else:
+            self.diccionario[numero] = 1
+
+        
+
+        return self.diccionario
+
+
+    def veces(self, numero):
+
+        for n, contador in self.diccionario.items():
+
+            if  n == numero:
+
+                return contador
+
+    def mas_repetido(self):
+        mayor = max(self.diccionario.values())
+
+        for numero, contador in self.diccionario.items():
+
+            if contador == mayor:
+
+                return (numero, contador)
+
+
+n = contador()
+
+print(n.agregar(30))
+print(n.agregar(30))
+print(n.agregar(30))
+print(n.agregar(10))
+print(n.agregar(50))
+print(n.veces(30))
+print(n.mas_repetido())
+
+
+"""
+Crea una clase ListaCompras que:
+
+Tenga un método agregar(producto, cantidad) que guarde los productos en un diccionario.
+Tenga un método aumentar(producto, cantidad) para aumentar la cantidad existente.
+Tenga un método productos_suficientes(minimo) que retorne una lista con los productos cuya cantidad sea mayor o igual al mínimo."""
+
+class lista:
+
+    def __init__(self):
+
+        self.diccionario = {}
+        self.lista = []
+
+    def agregar(self, producto, cantidad):
+
+        self.diccionario[producto] = cantidad
+
+        return self.diccionario
+
+
+    def aumentar(self, producto, cantidad):
+
+        for p, c in self.diccionario.items():
+
+            if p == producto:
+
+                self.diccionario[producto] = cantidad
+
+                return self.diccionario
+    
+    def productos_suficientes(self, minimo):
+
+        for producto, cantidad in self.diccionario.items():
+
+            if cantidad >= minimo:
+
+                self.lista.append(producto)
+
+        return self.lista
+
+
+
+
+
+
+compra = lista()
+print(compra.agregar("coca cola", 2))
+print(compra.agregar("inka", 3))
+print(compra.agregar("colada morada", 5))
+print(compra.agregar("jugo de mora", 1))
+print(compra.aumentar("inka", 5))
+print(compra.productos_suficientes(2))
+
+
+
+
+"""Crea una clase AnalizadorPalabras que:
+
+Tenga un método agregar_palabra(palabra).
+Guarde las palabras en una lista.
+Guarde las palabras únicas en un conjunto.
+Tenga un método cantidad_unicas().
+Tenga un método palabras_largas(minimo) que retorne las palabras cuya longitud sea mayor o igual al mínimo."""
+
+
+class AnalizadorPalabras:
+
+    def __init__(self):
+        self.lista = []
+        self.conjunto = set()
+
+
+    def agregar_palabra(self, palabra):
+
+        self.lista.append(palabra)
+        self.conjunto.add(palabra)
+        print(self.lista) 
+        print(self.conjunto)
+
+    def cantidad_unicas(self):
+        c=0
+
+        for n in self.conjunto:
+            c += 1
+
+        return c
+
+    def largas(self,minimo):
+
+        for n in self.lista:
+
+            if len(n) >= minimo:
+
+                print(n)
+
+pala = AnalizadorPalabras()
+pala.agregar_palabra("hola")
+pala.agregar_palabra("mundo")
+pala.agregar_palabra("escuela")
+pala.agregar_palabra("hola")
+print(pala.cantidad_unicas())
+pala.largas(5)
+
+
+
+"""Este es muy parecido al tipo de ejercicio que estás practicando actualmente.
+
+Crea una clase AgrupadorNumeros que:
+
+Tenga un método agrupar(numero) que determine si un número es:
+"par"
+"impar"
+Tenga un método agrupar_multiples(*numeros) que retorne:
+{
+    "pares": [],
+    "impares": []
+}
+Debe reutilizar el método agrupar().
+Tenga un método cantidad() que retorne:
+(cantidad_pares, cantidad_impares)"""
+
+
+class agruparnumero:
+
+    def __init__(self):
+        self.diccionario = {
+          "pares" : [],
+          "impares" : []
+        }
+
+    def agrupar(self, numero):
+
+        if numero % 2==0:
+            return "par"
+        else:
+            return "impar"
+
+    def agrupar_multiples(self, *numeros):
+
+        for n in numeros:
+
+            if self.agrupar(n) == "par":
+
+                self.diccionario["pares"].append(n)
+            else:
+                self.diccionario["impares"].append(n)
+
+
+        return self.diccionario
+
+    def cantidades(self):
+        par= len(self.diccionario["pares"])
+        impar =len(self.diccionario["impares"])
+
+        return (par, impar)
+
+    
+n = agruparnumero()
+print(n.agrupar(3))
+print(n.agrupar_multiples(10,20,30,5,3))
+print(n.cantidades())
+
+
+"""Crea una clase InventarioProductos que:
+
+Tenga un método agregar(producto, cantidad).
+Tenga un método vender(producto, cantidad) que reste unidades.
+Si no hay suficiente stock, debe retornar False.
+Si la venta se realiza correctamente, debe retornar True.
+Tenga un método bajo_stock(minimo) que retorne una lista de productos con stock menor al mínimo.
+"""
+class inventario:
+
+    def __init__(self):
+        self.diccionario = {}
+        self.lista = []
+
+    def agregar(self, producto, cantidad):
+        self.diccionario[producto] = cantidad
+
+        return self.diccionario
+
+    def vender(self,producto, cantidad):
+
+        self.diccionario[producto] -= cantidad
+
+        if self.diccionario[producto] < 0:
+
+            return False
+        else:
+            return True
+
+        return self.diccionario
+
+    def stock_bajo(self, minimo):
+
+        for producto, cantidad in self.diccionario.items():
+
+            if cantidad <= minimo:
+
+                self.lista.append(producto)
+
+        return self.lista
+
+
+producto = inventario()
+print(producto.agregar("coca cola", 10))
+print(producto.agregar("inka colca", 2))
+print(producto.agregar("cola manzana", 3))
+print(producto.agregar("pepsi", 50))
+print(producto.agregar("gallito", 120))
+print(producto.vender("coca cola", 9))
+print(producto.stock_bajo(9))
+
+
+
+"""Clase RegistroProductos que:
+
+Tenga método agregar_producto(nombre, precio) que guarde los productos en un diccionario.
+Tenga método buscar_producto(nombre) que retorne el precio del producto.
+Tenga método productos_mayores(precio) que retorne una lista con los productos cuyo precio sea mayor al valor recibido."""
+
+class registro:
+
+    def __init__(self):
+        self.diccionario = {}
+        self.lista = []
+
+    def agregar(self, nombre, precio):
+
+        self.diccionario[nombre] = precio
+
+        return self.diccionario
+
+
+    def buscar(self,nombre):
+
+        for n , precio in self.diccionario.items():
+
+            if n == nombre:
+                return precio
+
+    def mayores(self, precio):
+
+        for n , p in self.diccionario.items():
+
+            if p >= precio:
+                self.lista.append(n)
+
+        return self.lista
+
+producto = registro()
+print(producto.agregar("cuaderno" , 20.2))
+print(producto.agregar("lapiz" , 2.2))
+print(producto.agregar("borrador" , 0.50))
+print(producto.buscar("lapiz"))
+print(producto.mayores(10))
+
+
+"""clase SeparadorNumeros que:
+
+Tenga método es_multiplo(numero, divisor) que retorne True o False.
+Tenga método separar(*numeros) que retorne un diccionario:
+"""
+
+
+class separador:
+
+    def __init__(self):
+        self.diccionario = {
+        "multiplos" : [],
+        "no multiplos": []
+        }
+
+    def multiplo(self,numero, divisor):
+
+        if numero % divisor ==0:
+
+            return True
+        else:
+            return False
+
+
+    def separar(self, *numeros):
+
+        for n in numeros:
+
+            
+
+            if self.multiplo(n , 5):
+
+                self.diccionario["multiplos"].append(n)
+            else:
+                self.diccionario["no multiplos"].append(n)
+
+
+        return self.diccionario
+
+num = separador()
+print(num.multiplo(10,5))
+print(num.separar(10,2,3,4,5,4,3,5,6,43))
+
+
+
+"""Clase RegistroTemperaturas que:
+
+Tenga método agregar(*temperaturas) que guarde temperaturas en una lista.
+Tenga método temperatura_maxima() que retorne la temperatura mayor.
+Tenga método temperatura_minima() que retorne la temperatura menor.
+Tenga método promedio() que retorne el promedio."""
+
+class RegistroTemperaturas:
+
+    def __init__(self):
+        self.temperaturas = []
+
+    def agregar(self, *temperaturas):
+        for temperatura in temperaturas:
+            self.temperaturas.append(temperatura)
+
+    def temperatura_maxima(self):
+        mayor = self.temperaturas[0]
+
+        for temperatura in self.temperaturas:
+            if temperatura > mayor:
+                mayor = temperatura
+
+        return mayor
+
+    def temperatura_minima(self):
+        menor = self.temperaturas[0]
+
+        for temperatura in self.temperaturas:
+            if temperatura < menor:
+                menor = temperatura
+
+        return menor
+
+    def promedio(self):
+        suma = 0
+
+        for temperatura in self.temperaturas:
+            suma = suma + temperatura
+
+        return suma / len(self.temperaturas)
+
+
+rt = RegistroTemperaturas()
+
+rt.agregar(25, 30, 18, 27)
+
+print(rt.temperatura_maxima())
+print(rt.temperatura_minima())
+print(rt.promedio())
+
+
+
+"""Clase RegistroEmpleados que:
+
+Tenga método registrar(nombre, salario) que guarde en un diccionario.
+Tenga método empleados_mayor_salario(salario) que retorne una lista con los empleados que superen ese salario.
+Tenga método empleado_mejor_pagado() que retorne una tupla con (nombre, salario)."""
+
+class RegistroEmpleados:
+
+    def __init__(self):
+        self.empleados = {}
+
+    def registrar(self, nombre, salario):
+        self.empleados[nombre] = salario
+
+    def empleados_mayor_salario(self, salario):
+        lista = []
+
+        for nombre, salario_empleado in self.empleados.items():
+            if salario_empleado > salario:
+                lista.append(nombre)
+
+        return lista
+
+    def empleado_mejor_pagado(self):
+        nombre_mejor = ""
+        salario_mejor = 0
+
+        for nombre, salario in self.empleados.items():
+            if salario > salario_mejor:
+                salario_mejor = salario
+                nombre_mejor = nombre
+
+        return (nombre_mejor, salario_mejor)
+
+
+re = RegistroEmpleados()
+
+re.registrar("Ana", 800)
+re.registrar("Luis", 1200)
+re.registrar("Pedro", 950)
+
+print(re.empleados_mayor_salario(900))
+print(re.empleado_mejor_pagado())
+
+
+
+"""
+Clase BuscadorDivisores que:
+
+Tenga método encontrar(numero) que retorne una lista con los divisores.
+Tenga método cantidad(numero) que retorne la cantidad de divisores.
+Tenga método analizar(*numeros) que retorne un diccionario con {numero: cantidad_divisores}.
+
+Entrada"""
+
+class BuscadorDivisores:
+
+    def encontrar(self, numero):
+        divisores = []
+
+        for i in range(1, numero + 1):
+            if numero % i == 0:
+                divisores.append(i)
+
+        return divisores
+
+    def cantidad(self, numero):
+        divisores = self.encontrar(numero)
+
+        return len(divisores)
+
+    def analizar(self, *numeros):
+        resultado = {}
+
+        for numero in numeros:
+            resultado[numero] = self.cantidad(numero)
+
+        return resultado
+
+
+bd = BuscadorDivisores()
+
+print(bd.encontrar(12))
+print(bd.cantidad(12))
+print(bd.analizar(6, 12, 20))
+
+
+
+"""Clase AnalizadorPalabras que:
+
+Tenga método separar(texto) que retorne una lista de palabras usando split().
+Tenga método palabras_mayores(texto, cantidad) que retorne las palabras que tengan más caracteres que cantidad.
+Tenga método palabra_mas_larga(texto) que retorne la palabra con mayor longitud."""
+
+
+class AnalizadorPalabras:
+
+    def separar(self, texto):
+        return texto.split()
+
+    def palabras_mayores(self, texto, cantidad):
+        palabras = []
+        
+        for palabra in texto.split():
+            if len(palabra) > cantidad:
+                palabras.append(palabra)
+
+        return palabras
+
+    def palabra_mas_larga(self, texto):
+        palabras = texto.split()
+
+        mayor = palabras[0]
+
+        for palabra in palabras:
+            if len(palabra) > len(mayor):
+                mayor = palabra
+
+        return mayor
+
+
+ap = AnalizadorPalabras()
+
+print(ap.separar("el perro corre rapidamente"))
+print(ap.palabras_mayores("el perro corre rapidamente", 4))
+print(ap.palabra_mas_larga("el perro corre rapidamente"))
+
+
+"""Clase ControlStock que:
+
+Tenga método agregar(producto, cantidad) que guarde el stock en un diccionario.
+Tenga método vender(producto, cantidad) que disminuya el stock y retorne True si hay suficiente.
+Tenga método stock_bajo(minimo) que retorne una lista con los productos cuyo stock sea menor al mínimo."""
+
+
+
+class ControlStock:
+
+    def __init__(self):
+        self.stock = {}
+
+    def agregar(self, producto, cantidad):
+        self.stock[producto] = cantidad
+
+    def vender(self, producto, cantidad):
+        if producto in self.stock:
+            if self.stock[producto] >= cantidad:
+                self.stock[producto] = self.stock[producto] - cantidad
+                return True
+
+        return False
+
+    def stock_bajo(self, minimo):
+        lista = []
+
+        for producto, cantidad in self.stock.items():
+            if cantidad < minimo:
+                lista.append(producto)
+
+        return lista
+
+
+cs = ControlStock()
+
+cs.agregar("Pan", 50)
+cs.agregar("Leche", 20)
+
+print(cs.vender("Pan", 40))
+
+print(cs.stock)
+
+print(cs.stock_bajo(15))
+
+
+"""Clase AgrupadorNotas que:
+
+Tenga método clasificar(nota) que retorne:
+"baja" si la nota es menor a 60
+"media" si está entre 60 y 79
+"alta" si es 80 o más
+Tenga método agrupar(*notas) que retorne un diccionario:"""
+
+
+
+class AgrupadorNotas:
+
+    def clasificar(self, nota):
+        if nota < 60:
+            return "baja"
+        elif nota <= 79:
+            return "media"
+        else:
+            return "alta"
+
+    def agrupar(self, *notas):
+        resultado = {
+            "baja": [],
+            "media": [],
+            "alta": []
+        }
+
+        for nota in notas:
+            categoria = self.clasificar(nota)
+            resultado[categoria].append(nota)
+
+        return resultado
+
+
+an = AgrupadorNotas()
+
+print(an.agrupar(40, 65, 90, 75, 30))
+
+"""Clase ContadorCaracteres que:
+
+Tenga método analizar(texto) que guarde cada carácter en un diccionario contando repeticiones.
+Tenga método caracter_mas_repetido() que retorne el carácter con mayor frecuencia.
+Tenga método frecuencia(caracter) que retorne cuántas veces aparece."""
+
+
+
+class ContadorCaracteres:
+
+    def __init__(self):
+        self.caracteres = {}
+
+    def analizar(self, texto):
+
+        for caracter in texto:
+            if caracter in self.caracteres:
+                self.caracteres[caracter] = self.caracteres[caracter] + 1
+            else:
+                self.caracteres[caracter] = 1
+
+    def caracter_mas_repetido(self):
+        caracter_mayor = ""
+        cantidad_mayor = 0
+
+        for caracter, cantidad in self.caracteres.items():
+            if cantidad > cantidad_mayor:
+                cantidad_mayor = cantidad
+                caracter_mayor = caracter
+
+        return caracter_mayor
+
+    def frecuencia(self, caracter):
+        if caracter in self.caracteres:
+            return self.caracteres[caracter]
+
+        return 0
+
+
+cc = ContadorCaracteres()
+
+cc.analizar("banana")
+
+print(cc.caracteres)
+print(cc.caracter_mas_repetido())
+print(cc.frecuencia("a"))
+
+
+"""Clase CombinadorDatos que:
+
+Tenga método combinar(lista1, lista2) que retorne una lista alternando los elementos.
+Tenga método combinar_multiples(*listas) que combine varias listas.
+Tenga método sin_repetidos(lista) que retorne una lista sin duplicados usando un conjunto."""
+
+
+class CombinadorDatos:
+
+    def combinar(self, lista1, lista2):
+        resultado = []
+
+        mayor = max(len(lista1), len(lista2))
+
+        for i in range(mayor):
+
+            if i < len(lista1):
+                resultado.append(lista1[i])
+
+            if i < len(lista2):
+                resultado.append(lista2[i])
+
+        return resultado
+
+    def combinar_multiples(self, *listas):
+        resultado = []
+
+        mayor = 0
+
+        for lista in listas:
+            if len(lista) > mayor:
+                mayor = len(lista)
+
+        for i in range(mayor):
+
+            for lista in listas:
+                if i < len(lista):
+                    resultado.append(lista[i])
+
+        return resultado
+
+    def sin_repetidos(self, lista):
+        conjunto = set(lista)
+
+        return list(conjunto)
+
+
+cd = CombinadorDatos()
+
+print(cd.combinar([1, 2, 3], ["a", "b", "c"]))
+
+print(cd.combinar_multiples(
+    [1, 2, 3],
+    ["a", "b", "c"],
+    ["x", "y", "z"]
+))
+
+print(cd.sin_repetidos([1, 2, 2, 3, 3, 4]))
